@@ -41,6 +41,54 @@ class Admin extends CI_Controller
         $this->load->view('backend/index.php', $page_data);
     }
 
+    public function registered_user()
+    {
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+        $page_data['page_name'] = 'registered_user';
+        $page_data['page_title'] = get_phrase('registered_user');
+        $this->load->view('backend/index.php', $page_data);
+    }
+
+    public function registered_user_list()
+    {
+        // Check if the user is logged in as an admin
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+    
+        // Load the RegisteredUserModel
+        $this->load->model('Crud_model');
+    
+        // Retrieve registered user data
+        $registered_users_data = $this->Crud_model->RegisteredUser('registered_user'); // Correct method name
+    
+        // Set page data
+        $page_data['page_name'] = 'registered_user';
+        $page_data['page_title'] = get_phrase('registered_user');
+        $page_data['registered_users'] = $registered_users_data; // Pass data to the view
+    
+        // Load the view
+        $this->load->view('backend/index.php', $page_data);
+    }
+
+    public function sub_registered_user($user_id) {
+
+        $this->load->model('crud_model');
+        $user = $this->crud_model->subRegisteredUser($user_id);
+
+       // Set page data
+       $page_data['page_name'] = 'registered_user';
+       $page_data['page_title'] = get_phrase('registered_user');
+       $page_data['sub_registered'] = $user; // Pass data to the view
+
+       $this->load->view('backend/index.php', $page_data);
+
+    }
+    
+    
+
     public function categories($param1 = "", $param2 = "")
     {
         if ($this->session->userdata('admin_login') != true) {

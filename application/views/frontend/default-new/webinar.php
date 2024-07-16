@@ -1263,7 +1263,8 @@
                                                 data-widget_type="button.default">
                                                 <div class="elementor-widget-container">
                                                     <div class="elementor-button-wrapper">
-                                                        <a href="<?php echo site_url('home/handle_buy_now2') ?>"
+                                                    <form action="<?php echo site_url('home/webinar_payment'); ?>" method="post">
+                                                        <a href="javascript:void(0);" onclick="this.closest('form').submit();"
                                                             class="elementor-button-link elementor-button elementor-size-sm"
                                                             role="button">
                                                             <span class="elementor-button-content-wrapper">

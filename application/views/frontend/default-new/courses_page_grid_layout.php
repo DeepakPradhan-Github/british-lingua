@@ -30,11 +30,7 @@
                         <div class="courses-text">
                             <h5 class="mb-2"><?php echo $course['title']; ?></h5>
                             <div class="review-icon">
-                                <div class="review-icon-star align-item-center">
-                                    <p><?php echo $average_ceil_rating; ?></p>
-                                    <p><i class="fa-solid fa-star <?php if ($number_of_ratings > 0) echo 'filled'; ?>"></i></p>
-                                    <p>(<?php echo $number_of_ratings; ?> <?php echo get_phrase('Reviews') ?>)</p>
-                                </div>
+                                
                                 <div class="review-btn d-flex align-items-center">
                                     <span class="compare-img checkPropagation" onclick="redirectTo('<?php echo base_url('home/compare?course-1=' . slugify($course['title']) . '&course-id-1=' . $course['id']); ?>');">
                                         <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>">

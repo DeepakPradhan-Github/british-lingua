@@ -65,6 +65,102 @@ class Payment_model extends CI_Model
 
         $this->session->set_userdata('payment_details', $data);
     }
+    function configure_demo_payment()
+    {
+        $items = array();
+        // Update the value here for demo class
+        $total_payable_amount = 99;
+
+        //item detail
+        foreach ($this->session->userdata('cart_items') as $key => $cart_item) :
+            $course_details = $this->crud_model->get_course_by_id($cart_item)->row_array();
+            $item_details['id'] = $cart_item;
+            $item_details['title'] = 'Demo Class';
+            $item_details['thumbnail'] = $this->crud_model->get_course_thumbnail_url($course_details['id']);
+            $item_details['creator_id'] = $course_details['creator'];
+            $item_details['discount_flag'] = $course_details['discount_flag'];
+            $item_details['discounted_price'] = $total_payable_amount;
+            $item_details['price'] = $total_payable_amount;
+
+            $item_details['actual_price'] = ($course_details['discount_flag'] == 1) ? $course_details['discounted_price'] : $course_details['price'];
+            $item_details['sub_items'] = array();
+
+            $items[$key] = $item_details;
+            $total_payable_amount += $item_details['actual_price'];
+        endforeach;
+        //ended item detail
+
+        //if applied coupon
+        $coupon_code = $this->session->userdata('applied_coupon');
+        if ($coupon_code) {
+            $total_payable_amount = $this->crud_model->get_discounted_price_after_applying_coupon($coupon_code);
+        }
+
+        //included tax
+        $total_payable_amount = round($total_payable_amount + ($total_payable_amount / 100) * get_settings('course_selling_tax'), 2);
+
+        //common structure for all payment gateways and all type of payment
+        $data['total_payable_amount'] = $total_payable_amount;
+        $data['items'] = $items;
+        $data['is_instructor_payout_user_id'] = false;
+        $data['payment_title'] = get_phrase('pay_for_purchasing_course').' Demo Class';
+        $data['success_url'] = site_url('payment/success_course_payment');
+        $data['cancel_url'] = site_url('payment');
+        $data['back_url'] = site_url('home/shopping_cart');
+
+        // Course gift
+        $data['gift_to_user_id'] = $this->session->userdata('gift_to_user_id');
+
+        $this->session->set_userdata('payment_details', $data);
+    }
+    function configure_webinar_payment()
+    {
+        $items = array();
+        // Update the value here for webinar
+        $total_payable_amount = 199;
+
+        //item detail
+        foreach ($this->session->userdata('cart_items') as $key => $cart_item) :
+            $course_details = $this->crud_model->get_course_by_id($cart_item)->row_array();
+            $item_details['id'] = $cart_item;
+            $item_details['title'] = 'Demo Class';
+            $item_details['thumbnail'] = $this->crud_model->get_course_thumbnail_url($course_details['id']);
+            $item_details['creator_id'] = $course_details['creator'];
+            $item_details['discount_flag'] = $course_details['discount_flag'];
+            $item_details['discounted_price'] = $total_payable_amount;
+            $item_details['price'] = $total_payable_amount;
+
+            $item_details['actual_price'] = ($course_details['discount_flag'] == 1) ? $course_details['discounted_price'] : $course_details['price'];
+            $item_details['sub_items'] = array();
+
+            $items[$key] = $item_details;
+            $total_payable_amount += $item_details['actual_price'];
+        endforeach;
+        //ended item detail
+
+        //if applied coupon
+        $coupon_code = $this->session->userdata('applied_coupon');
+        if ($coupon_code) {
+            $total_payable_amount = $this->crud_model->get_discounted_price_after_applying_coupon($coupon_code);
+        }
+
+        //included tax
+        $total_payable_amount = round($total_payable_amount + ($total_payable_amount / 100) * get_settings('course_selling_tax'), 2);
+
+        //common structure for all payment gateways and all type of payment
+        $data['total_payable_amount'] = $total_payable_amount;
+        $data['items'] = $items;
+        $data['is_instructor_payout_user_id'] = false;
+        $data['payment_title'] = get_phrase('pay_for_purchasing_course').' Webinar';
+        $data['success_url'] = site_url('payment/success_course_payment');
+        $data['cancel_url'] = site_url('payment');
+        $data['back_url'] = site_url('home/shopping_cart');
+
+        // Course gift
+        $data['gift_to_user_id'] = $this->session->userdata('gift_to_user_id');
+
+        $this->session->set_userdata('payment_details', $data);
+    }
 
     function configure_instructor_payment($is_instructor_payout_user_id = false)
     {

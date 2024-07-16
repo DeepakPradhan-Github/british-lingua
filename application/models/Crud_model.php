@@ -36,6 +36,22 @@ class Crud_model extends CI_Model
         return $category_details['id'];
     }
 
+    public function RegisteredUser($table)
+    {
+        return $this->db->get($table)->result_array();
+    }
+
+    function subRegisteredUser($user_id)
+  {
+    //print_r($user_id); die("===");
+    $this->db->where('id', $user_id);
+    return $user = $this->db->get("registered_user")->row_array(); //Select * from users where user_id = ?
+
+  }
+
+    
+
+
     public function add_category()
     {
         $data['code']   = html_escape($this->input->post('code'));

@@ -302,15 +302,15 @@ class Home extends CI_Controller
     public function course2($slug = "", $course_id = "")
     {
         //course_addon start
-
-
+        
+        // Not Going Inside
         if (addon_status('affiliate_course')) {
             if (isset($_GET['ref'])) {
                 $CI    = &get_instance();
                 $CI->load->model('addons/affiliate_course_model');
                 $affiliator_details_for_checking_active_status = $_GET['ref'];
                 $check_validity = $CI->affiliate_course_model->get_user_by_unique_identifier($affiliator_details_for_checking_active_status);
-
+                
                 if ($check_validity['status'] == 1 && $check_validity['user_id'] != $this->session->userdata('user_id')) {
 
                     if (isset($_GET['ref'])) {
@@ -326,9 +326,9 @@ class Home extends CI_Controller
                 }
             }
         }
+        // ==============
 
-
-
+        
 
         //course_addon end 
 
@@ -715,11 +715,13 @@ class Home extends CI_Controller
     //choose payment gateway
     public function payment()
     {
+        
         if ($this->session->userdata('user_login') != 1)
             redirect('login', 'refresh');
 
         $page_data['total_price_of_checking_out'] = $this->session->userdata('total_price_of_checking_out');
         $page_data['page_title'] = site_phrase("payment_gateway");
+        
         $this->load->view('payment/index', $page_data);
     }
 
@@ -840,6 +842,7 @@ class Home extends CI_Controller
     public function razorpay_payment($payment_request_mobile = "")
     {
 
+        
         $response = array();
         if (isset($_GET['user_id']) && !empty($_GET['user_id']) && isset($_GET['amount']) && !empty($_GET['amount'])) {
 
@@ -1786,6 +1789,26 @@ class Home extends CI_Controller
         }
         //End course gift
         $this->payment_model->configure_course_payment();
+        redirect(site_url('payment'));
+    }
+    function demo_payment()
+    {
+        
+        if (!$this->session->userdata('user_login')) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        $this->payment_model->configure_demo_payment();
+        redirect(site_url('payment'));
+    }
+    function webinar_payment()
+    {
+        
+        if (!$this->session->userdata('user_login')) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        $this->payment_model->configure_webinar_payment();
         redirect(site_url('payment'));
     }
 

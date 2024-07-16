@@ -101,7 +101,7 @@ if ($number_of_ratings > 0) {
             </div>
          
 
-                            <form action="http://localhost/application_1/payment" method="post">
+                            <form action="payment" method="post">
                     
                     <div id="gift_email_section" class="d-hidden">
                         <div class="input-group mb-0">

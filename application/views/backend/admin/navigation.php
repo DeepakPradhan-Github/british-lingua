@@ -50,6 +50,12 @@ $status_wise_courses = $this->crud_model->get_status_wise_courses();
 							<a href="<?php echo site_url('admin/categories'); ?>"><?php echo get_phrase('course_category'); ?></a>
 						</li>
 					<?php endif; ?>
+
+					<?php if (has_permission('course')) : ?>
+						<li class="<?php if ($page_name == 'course_add') echo 'active'; ?>">
+							<a href="<?php echo site_url('admin/registered_user_list'); ?>"><?php echo get_phrase('registered_user'); ?></a>
+						</li>
+					<?php endif; ?>
 					<?php if (has_permission('coupon')) : ?>
 						<li class="<?php if ($page_name == 'coupons' || $page_name == 'coupon_add' || $page_name == 'coupon_edit') echo 'active'; ?>">
 							<a href="<?php echo site_url('admin/coupons'); ?>">

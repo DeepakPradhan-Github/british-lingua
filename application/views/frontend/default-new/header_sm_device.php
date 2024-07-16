@@ -17,6 +17,9 @@
         <div class="offcanvas-header bg-light">
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           <div class="offcanves-btn">
+            <!--  <button class="nav-link header-dropdown px-3 text-nowrap" data-bs-dismiss="offcanvas" aria-label="Close" onclick="openAssessment();" id="" style="color:white">Take An-->
+            <!--Assessment Test</button>-->
+            <a class="signUp-btn" href="<?php echo site_url('home/webinar'); ?>"id=""><?php echo site_phrase('Webinar'); ?></a>
             <a href="<?php echo site_url('sign_up'); ?>" class="signUp-btn"><?php echo get_phrase('Sign Up'); ?></a>
             <a href="<?php echo site_url('login'); ?>" class="logIn-btn"><?php echo get_phrase('Login'); ?></a>
           </div>

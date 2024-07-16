@@ -24,10 +24,10 @@
     <div class="navbar-collapse" id="navbarSupportedContent">
       <!-- Small Device Hide -->
       <ul class="navbar-nav main-nav-wrap mb-2 mb-lg-0 align-items-center">
-        <li class="nav-item" style="margin-right:5px">
-          <button class="nav-link header-dropdown px-3 text-nowrap" onclick="openAssessment();" id="">Take An
-            Assessment Test</button>
-        </li>
+        <!--<li class="nav-item" style="margin-right:5px">-->
+        <!--  <button class="nav-link header-dropdown px-3 text-nowrap" onclick="openAssessment();" id="">Take An-->
+        <!--    Assessment Test</button>-->
+        <!--</li>-->
 
         <li class="nav-item" style="margin-right:5px">
           <a class="nav-link header-dropdown px-3 text-nowrap" href="<?php echo site_url('home/webinar'); ?>"
@@ -241,7 +241,7 @@
 
         <?php if ($user_login): ?>
           <li><a class="dropdown-item"
-              href="<?php echo site_url('home/my_courses') ?>"><?php echo site_phrase('My Course') ?></a></li>
+              href="<?php echo site_url('home/my_courses') ?>"><?php echo site_phrase('My Courses') ?></a></li>
         <?php elseif ($admin_login): ?>
           <li><a class="dropdown-item"
               href="<?php echo site_url('admin'); ?>"><?php echo get_phrase('Administration') ?></a></li>
@@ -526,11 +526,11 @@
                     
                        
                             <div class="single-popup-course">
-                                <a href="http://localhost/application_1/home/course/elementary-english-course/1" id="latest_course_1" class="checkPropagation courses-card-body" data-target="webuiPopover0">
+                                <a href="/home/course/elementary-english-course/1" id="latest_course_1" class="checkPropagation courses-card-body" data-target="webuiPopover0">
                                     <div class="courses-card-image">
-                                        <img loading="lazy" src="http://localhost/application_1/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_11718256761.jpg">
+                                        <img loading="lazy" src="/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_11718256761.jpg">
                                         <div class="courses-icon " id="coursesWishlistIconLatestCourse1">
-                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('http://localhost/application_1/home/toggleWishlistItems/1/LatestCourse')"></i>
+                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('/home/toggleWishlistItems/1/LatestCourse')"></i>
                                         </div>
                                         <div class="courses-card-image-text">
                                             <h3>Beginner</h3>
@@ -539,14 +539,10 @@
                                     <div class="courses-text">
                                         <h5 class="mb-2">Elementary English Course</h5>
                                         <div class="review-icon">
-                                            <div class="review-icon-star align-items-center" style="display:flex">
-                                                <p>5</p>
-                                                <p><i class="fa-solid fa-star filled"></i></p>
-                                                <p>(1 Reviews)</p>
-                                            </div>
+                                            
                                             <div class="review-btn d-flex align-items-center">
-                                            <span class="compare-img checkPropagation" onclick="redirectTo('http://localhost/application_1/home/compare?course-1=elementary-english-course&amp;course-id-1=1');">
-                                                    <img loading="lazy" src="http://localhost/application_1/assets/frontend/default-new/image/compare.png">
+                                            <span class="compare-img checkPropagation" onclick="redirectTo('/home/compare?course-1=elementary-english-course&amp;course-id-1=1');">
+                                                    <img loading="lazy" src="/assets/frontend/default-new/image/compare.png">
                                                     Compare                                                </span>
                                             </div>
                                         </div>
@@ -587,11 +583,11 @@
                     
                        
                             <div class="single-popup-course">
-                                <a href="http://localhost/application_1/home/course/basic-english-course/2" id="latest_course_2" class="checkPropagation courses-card-body">
+                                <a href="/home/course/basic-english-course/2" id="latest_course_2" class="checkPropagation courses-card-body">
                                     <div class="courses-card-image">
-                                        <img loading="lazy" src="http://localhost/application_1/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_21718256893.jpg">
+                                        <img loading="lazy" src="/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_21718256893.jpg">
                                         <div class="courses-icon " id="coursesWishlistIconLatestCourse2">
-                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('http://localhost/application_1/home/toggleWishlistItems/2/LatestCourse')"></i>
+                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('/home/toggleWishlistItems/2/LatestCourse')"></i>
                                         </div>
                                         <div class="courses-card-image-text">
                                             <h3>Beginner</h3>
@@ -600,14 +596,10 @@
                                     <div class="courses-text">
                                         <h5 class="mb-2">Basic English Course</h5>
                                         <div class="review-icon">
-                                            <div class="review-icon-star align-items-center" style="display:flex;">
-                                                <p>5</p>
-                                                <p><i class="fa-solid fa-star filled"></i></p>
-                                                <p>(1 Reviews)</p>
-                                            </div>
+                                            
                                             <div class="review-btn d-flex align-items-center">
-                                            <span class="compare-img checkPropagation" onclick="redirectTo('http://localhost/application_1/home/compare?course-1=basic-english-course&amp;course-id-1=2');">
-                                                    <img loading="lazy" src="http://localhost/application_1/assets/frontend/default-new/image/compare.png">
+                                            <span class="compare-img checkPropagation" onclick="redirectTo('/home/compare?course-1=basic-english-course&amp;course-id-1=2');">
+                                                    <img loading="lazy" src="/assets/frontend/default-new/image/compare.png">
                                                     Compare                                                </span>
                                             </div>
                                         </div>
@@ -635,7 +627,7 @@
                                     <!--    <p class="last-update">Last updated Thu, 13-Jun-2024</p>-->
                                     <!---->
                                     <div class="course-title">
-                                        <a href="http://localhost/application_1/home/course/basic-english-course/2">Basic English Course</a>
+                                        <a href="/home/course/basic-english-course/2">Basic English Course</a>
                                     </div>
                                     <div class="course-meta">
                                                                                     <!--<span class=""><i class="fas fa-play-circle"></i>-->
@@ -656,11 +648,11 @@
                                     <div class="popover-btns">
                                                                                                                             
                                                 <!-- Cart button -->
-                                                <!-- <a id="added_to_cart_btn_latest_course2" class="purchase-btn align-items-center me-auto d-hidden" href="javascript:void(0)" onclick="actionTo('http://localhost/application_1/home/handle_cart_items/2/latest_course');">
+                                                <!-- <a id="added_to_cart_btn_latest_course2" class="purchase-btn align-items-center me-auto d-hidden" href="javascript:void(0)" onclick="actionTo('/home/handle_cart_items/2/latest_course');">
                                                     <i class="fas fa-minus me-2"></i> Remove from cart                                                </a>
-                                                <a id="add_to_cart_btn_latest_course2" class="purchase-btn align-items-center me-auto " href="javascript:void(0)" onclick="actionTo('http://localhost/application_1/home/handle_cart_items/2/latest_course'); ">
+                                                <a id="add_to_cart_btn_latest_course2" class="purchase-btn align-items-center me-auto " href="javascript:void(0)" onclick="actionTo('/home/handle_cart_items/2/latest_course'); ">
                                                     <i class="fas fa-plus me-2"></i> Add to cart                                                </a> -->
-                                                <a id="add_to_cart_btn_latest_course2" class="purchase-btn align-items-center me-auto " href="http://localhost/application_1/home/course/basic-english-course/2" onclick="actionTo('http://localhost/application_1/home/course/basic-english-course/2'); ?>'); ">
+                                                <a id="add_to_cart_btn_latest_course2" class="purchase-btn align-items-center me-auto " href="/home/course/basic-english-course/2" onclick="actionTo('/home/course/basic-english-course/2'); ?>'); ">
                                                     <i class="fas fa-credit-card me-2"></i> Buy now                                                </a>
                                                 <!-- Cart button ended-->
                                                                                                                         </div>
@@ -695,11 +687,11 @@
                     
                        
                             <div class="single-popup-course">
-                                <a href="http://localhost/application_1/home/course/crash-course-in-english/3" id="latest_course_3" class="checkPropagation courses-card-body" data-target="webuiPopover2">
+                                <a href="/home/course/crash-course-in-english/3" id="latest_course_3" class="checkPropagation courses-card-body" data-target="webuiPopover2">
                                     <div class="courses-card-image">
-                                        <img loading="lazy" src="http://localhost/application_1/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_31718168893.jpg">
+                                        <img loading="lazy" src="/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_31718168893.jpg">
                                         <div class="courses-icon " id="coursesWishlistIconLatestCourse3">
-                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('http://localhost/application_1/home/toggleWishlistItems/3/LatestCourse')"></i>
+                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('/home/toggleWishlistItems/3/LatestCourse')"></i>
                                         </div>
                                         <div class="courses-card-image-text">
                                             <h3>Beginner</h3>
@@ -708,14 +700,10 @@
                                     <div class="courses-text">
                                         <h5 class="mb-2">Crash Course in English</h5>
                                         <div class="review-icon">
-                                            <div class="review-icon-star align-items-center" style="display:flex;">
-                                                <p>5</p>
-                                                <p><i class="fa-solid fa-star filled"></i></p>
-                                                <p>(1 Reviews)</p>
-                                            </div>
+                                            
                                             <div class="review-btn d-flex align-items-center">
-                                            <span class="compare-img checkPropagation" onclick="redirectTo('http://localhost/application_1/home/compare?course-1=crash-course-in-english&amp;course-id-1=3');">
-                                                    <img loading="lazy" src="http://localhost/application_1/assets/frontend/default-new/image/compare.png">
+                                            <span class="compare-img checkPropagation" onclick="redirectTo('/home/compare?course-1=crash-course-in-english&amp;course-id-1=3');">
+                                                    <img loading="lazy" src="/assets/frontend/default-new/image/compare.png">
                                                     Compare                                                </span>
                                             </div>
                                         </div>
@@ -756,11 +744,11 @@
                     
                        
                             <div class="single-popup-course">
-                                <a href="http://localhost/application_1/home/course/advanced-course-in-english/4" id="latest_course_4" class="checkPropagation courses-card-body" data-target="webuiPopover3">
+                                <a href="/home/course/advanced-course-in-english/4" id="latest_course_4" class="checkPropagation courses-card-body" data-target="webuiPopover3">
                                     <div class="courses-card-image">
-                                        <img loading="lazy" src="http://localhost/application_1/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_41718168914.jpg">
+                                        <img loading="lazy" src="/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_41718168914.jpg">
                                         <div class="courses-icon " id="coursesWishlistIconLatestCourse4">
-                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('http://localhost/application_1/home/toggleWishlistItems/4/LatestCourse')"></i>
+                                            <i class="fa-solid fa-heart checkPropagation" onclick="actionTo('/home/toggleWishlistItems/4/LatestCourse')"></i>
                                         </div>
                                         <div class="courses-card-image-text">
                                             <h3>Advanced</h3>
@@ -769,14 +757,10 @@
                                     <div class="courses-text">
                                         <h5 class="mb-2">Advanced Course in English</h5>
                                         <div class="review-icon">
-                                            <div class="review-icon-star align-items-center" style="display:flex;">
-                                                <p>5</p>
-                                                <p><i class="fa-solid fa-star filled"></i></p>
-                                                <p>(1 Reviews)</p>
-                                            </div>
+                                            
                                             <div class="review-btn d-flex align-items-center">
-                                            <span class="compare-img checkPropagation" onclick="redirectTo('http://localhost/application_1/home/compare?course-1=advanced-course-in-english&amp;course-id-1=4');">
-                                                    <img loading="lazy" src="http://localhost/application_1/assets/frontend/default-new/image/compare.png">
+                                            <span class="compare-img checkPropagation" onclick="redirectTo('/home/compare?course-1=advanced-course-in-english&amp;course-id-1=4');">
+                                                    <img loading="lazy" src="/assets/frontend/default-new/image/compare.png">
                                                     Compare                                                </span>
                                             </div>
                                         </div>

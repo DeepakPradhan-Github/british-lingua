@@ -158,8 +158,9 @@
 	}
 </style>
 
-<?php
+<?php 
 $payment_details = $this->session->userdata('payment_details');
+
 $payment_gateways = $this->db->where('status', 1)->get('payment_gateways')->result_array();
 ?>
 
@@ -169,7 +170,7 @@ $payment_gateways = $this->db->where('status', 1)->get('payment_gateways')->resu
 			<div class="row">
 				<div class="col-md-12">
 					<span class="payment-header-text float-start"><b><?php echo get_phrase('make_payment'); ?></b></span>
-					<a href="<?php echo $payment_details['back_url']; ?>" class="close-btn-light float-end"><i class="fa fa-times"></i></a>
+					<a href="<?php  echo site_url(); ?>" class="close-btn-light float-end"><i class="fa fa-times"></i></a>
 				</div>
 			</div>
 		</div>

@@ -10,7 +10,7 @@
     </div><!-- end col-->
 </div>
 <div class="row">
-    <?php foreach ($categories->result_array() as $category) :
+    <?php foreach ($categories->result_array() as $category) : 
         if ($category['parent'] > 0)
             continue;
         $sub_categories = $this->crud_model->get_sub_categories($category['id']); ?>

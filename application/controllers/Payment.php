@@ -18,7 +18,6 @@ class Payment extends CI_Controller
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
         $this->output->set_header('Pragma: no-cache');
 
-
         if (isset($_GET['i']) && !empty($_GET['i'])) {
             $this->payment_model->checkLogin($_GET['i']);
         }
@@ -29,14 +28,13 @@ class Payment extends CI_Controller
         }
     }
 
-    function index()
+    public function index()
     {
         $page_data['page_title'] = get_phrase('payment');
         $this->load->view('payment-global/index.php', $page_data);
     }
 
-
-    function success_course_payment($payment_method = "")
+    public function success_course_payment($payment_method = "")
     {
         //STARTED payment model and functions are dynamic here
         $response = false;
@@ -80,7 +78,7 @@ class Payment extends CI_Controller
         }
     }
 
-    function success_instructor_payment($payment_method = "")
+    public function success_instructor_payment($payment_method = "")
     {
         //STARTED payment model and functions are dynamic here
         $user_id = $this->session->userdata('user_id');
@@ -108,28 +106,11 @@ class Payment extends CI_Controller
         redirect(site_url('admin/instructor_payout'), 'refresh');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function create_stripe_payment($success_url = "", $cancel_url = "", $public_key = "", $secret_key = "")
+    public function create_stripe_payment($success_url = "", $cancel_url = "", $public_key = "", $secret_key = "")
     {
         $identifier = 'stripe';
         $payment_details = $this->session->userdata('payment_details');
         $payment_gateway = $this->db->get_where('payment_gateways', ['identifier' => $identifier])->row_array();
-
-
 
         //start common code of all payment gateway
         if ($payment_details['is_instructor_payout_user_id'] > 0) {
@@ -167,8 +148,8 @@ class Payment extends CI_Controller
         $response = array(
             'status' => 0,
             'error' => array(
-                'message' => 'Invalid Request!'
-            )
+                'message' => 'Invalid Request!',
+            ),
         );
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -195,7 +176,7 @@ class Payment extends CI_Controller
                             'unit_amount' => $stripeAmount,
                             'currency' => $payment_gateway['currency'],
                         ],
-                        'quantity' => 1
+                        'quantity' => 1,
                     ]],
                     'mode' => 'payment',
                     'success_url' => STRIPE_SUCCESS_URL . '/' . $identifier . '?session_id={CHECKOUT_SESSION_ID}',
@@ -209,14 +190,14 @@ class Payment extends CI_Controller
                 $response = array(
                     'status' => 1,
                     'message' => 'Checkout Session created successfully!',
-                    'sessionId' => $session['id']
+                    'sessionId' => $session['id'],
                 );
             } else {
                 $response = array(
                     'status' => 0,
                     'error' => array(
-                        'message' => 'Checkout Session creation failed! ' . $api_error
-                    )
+                        'message' => 'Checkout Session creation failed! ' . $api_error,
+                    ),
                 );
             }
         }
@@ -224,7 +205,6 @@ class Payment extends CI_Controller
         // Return response
         echo json_encode($response);
     }
-
 
     /***
      * Hande-shake with SSL COMMERZ gateway and return payment url
@@ -235,7 +215,6 @@ class Payment extends CI_Controller
         $identifier = 'sslcommerz';
         $payment_details = $this->session->userdata('payment_details');
         $payment_gateway = $this->db->get_where('payment_gateways', ['identifier' => $identifier])->row_array();
-
 
         //start common code of all payment gateway
         if ($payment_details['is_instructor_payout_user_id'] > 0) {
@@ -262,10 +241,9 @@ class Payment extends CI_Controller
         $post_data['currency'] = $payment_gateway['currency'];
         $post_data['tran_id'] = "SSLCZ_TXN_" . uniqid();
         $post_data['success_url'] = $payment_details['success_url'] . '/' . $payment_gateway['identifier'];
-        $post_data['fail_url'] =  $payment_details['cancel_url'];
-        $post_data['cancel_url'] =  $payment_details['cancel_url'];
+        $post_data['fail_url'] = $payment_details['cancel_url'];
+        $post_data['cancel_url'] = $payment_details['cancel_url'];
         # $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
-
 
         $user_details = $this->user_model->get_all_user($this->session->userdata('user_id'))->row_array();
         # CUSTOMER INFORMATION
@@ -286,8 +264,7 @@ class Payment extends CI_Controller
         curl_setopt($handle, CURLOPT_POST, 1);
         curl_setopt($handle, CURLOPT_POSTFIELDS, $post_data);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, FALSE); # KEEP IT FALSE IF YOU RUN FROM LOCAL PC
-
+        curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false); # KEEP IT FALSE IF YOU RUN FROM LOCAL PC
 
         $content = curl_exec($handle);
 
@@ -307,14 +284,14 @@ class Payment extends CI_Controller
             $response = array(
                 'status' => 1,
                 'message' => 'Checkout Session created successfully!',
-                'content' => $ssl_commerz_response
+                'content' => $ssl_commerz_response,
             );
         } else {
             $response = array(
                 'status' => 0,
                 'error' => array(
                     'message' => 'Checkout Session creation failed! ' . $api_error,
-                )
+                ),
             );
         }
 
@@ -327,7 +304,6 @@ class Payment extends CI_Controller
         $identifier = 'payu';
         $payment_details = $this->session->userdata('payment_details');
         $payment_gateway = $this->db->get_where('payment_gateways', ['identifier' => $identifier])->row_array();
-
 
         //start common code of all payment gateway
         if ($payment_details['is_instructor_payout_user_id'] > 0) {
@@ -401,7 +377,7 @@ class Payment extends CI_Controller
             $response = ([
                 "status" => 1,
                 "message" => 'Checkout Session created successfully!',
-                "GatewayPageURL" => $response->getResponse()->redirectUri
+                "GatewayPageURL" => $response->getResponse()->redirectUri,
             ]);
         } catch (\Exception $exception) {
 
@@ -409,7 +385,7 @@ class Payment extends CI_Controller
                 'status' => 0,
                 'error' => array(
                     'message' => 'Checkout Session creation failed! ' . $exception->getMessage(),
-                )
+                ),
             );
         }
 
@@ -422,7 +398,6 @@ class Payment extends CI_Controller
         $identifier = 'xendit';
         $payment_details = $this->session->userdata('payment_details');
         $payment_gateway = $this->db->get_where('payment_gateways', ['identifier' => $identifier])->row_array();
-
 
         //start common code of all payment gateway
         if ($payment_details['is_instructor_payout_user_id'] > 0) {
@@ -437,7 +412,6 @@ class Payment extends CI_Controller
         $user = $this->user_model->get_user($this->session->userdata("user_id"))->row();
 
         require_once APPPATH . 'libraries/xendit/vendor/autoload.php';
-
 
         try {
             \Xendit\Xendit::setApiKey($keys["api_key"]);
@@ -460,7 +434,7 @@ class Payment extends CI_Controller
             $response = array(
                 "status" => 1,
                 "message" => 'Checkout Session created successfully!',
-                "GatewayPageURL" => $getInvoice["invoice_url"]
+                "GatewayPageURL" => $getInvoice["invoice_url"],
             );
         } catch (\Exception $exception) {
 
@@ -468,7 +442,7 @@ class Payment extends CI_Controller
                 'status' => 0,
                 'error' => array(
                     'message' => 'Checkout Session creation failed! ' . $exception->getMessage(),
-                )
+                ),
             );
         }
 
@@ -508,7 +482,6 @@ class Payment extends CI_Controller
 
         $user = $this->user_model->get_user($this->session->userdata("user_id"))->row();
 
-
         $order_data = array(
             'customerId' => 'ID-123456',
             'customerEmail' => $user->email,
@@ -518,7 +491,7 @@ class Payment extends CI_Controller
             'invoiceNumber' => "DK_" . uniqid(),
             'amount' => $payment_details["total_payable_amount"],
             'lineItems' => array(
-                array("name" => $payment_details['payment_title'], 'price' => $payment_details["total_payable_amount"], "quantity" => count($payment_details["items"]))
+                array("name" => $payment_details['payment_title'], 'price' => $payment_details["total_payable_amount"], "quantity" => count($payment_details["items"])),
             ),
             'urlFail' => $payment_details['cancel_url'],
             'urlSuccess' => $payment_details['success_url'] . "/" . $identifier,
@@ -527,7 +500,7 @@ class Payment extends CI_Controller
             'fontColor' => '',
             'buttonBackgroundColor' => '',
             'address' => '',
-            'buttonFontColor' => ''
+            'buttonFontColor' => '',
         );
 
         try {
@@ -537,7 +510,7 @@ class Payment extends CI_Controller
                 "status" => 1,
                 "message" => 'Checkout Session created successfully!',
                 //"GatewayPageURL" => $obj_response["credit_card_payment_page"]["url"],
-                "response" => $obj_response
+                "response" => $obj_response,
             );
         } catch (\Exception $exception) {
 
@@ -545,7 +518,7 @@ class Payment extends CI_Controller
                 'status' => 0,
                 'error' => array(
                     'message' => 'Checkout Session creation failed! ' . $exception->getMessage(),
-                )
+                ),
             );
         }
 
@@ -608,8 +581,7 @@ class Payment extends CI_Controller
         file_put_contents($log_file_data, $log_header . $log_msg . "\n", FILE_APPEND);
     }
 
-
-    function pay_by_cashfree()
+    public function pay_by_cashfree()
     {
         $identifier = 'cashfree';
         $payment_details = $this->session->userdata('payment_details');
@@ -639,7 +611,7 @@ class Payment extends CI_Controller
         $_POST['order_id'] = random(40);
         $_POST['order_meta']['return_url'] = $payment_details['success_url'] . '/cashfree?order_id=' . $_POST['order_id'];
 
-        require_once(APPPATH . 'libraries/cachefree/vendor/autoload.php');
+        require_once APPPATH . 'libraries/cachefree/vendor/autoload.php';
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', "$url", [
             'body' => json_encode($_POST),
@@ -654,9 +626,8 @@ class Payment extends CI_Controller
 
         $res = $response->getBody();
 
-
         echo '<html><body><script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
-        
+
         <script>const cashfree = Cashfree({
             mode:"sandbox" //or production
         });
@@ -664,13 +635,12 @@ class Payment extends CI_Controller
             paymentSessionId: "' . json_decode($res, true)['payment_session_id'] . '",
             redirectTarget: "_self" //optional (_self or _blank)
         }
-        
+
         cashfree.checkout(checkoutOptions)
         </script></body><html>';
     }
 
-
-    function create_maxicash_payment()
+    public function create_maxicash_payment()
     {
         $identifier = 'maxicash';
         $payment_details = $this->session->userdata('payment_details');
@@ -693,7 +663,7 @@ class Payment extends CI_Controller
             "PayType" => "MaxiCash",
             "MerchantID" => $keys['merchant_id'],
             "MerchantPassword" => $keys['merchant_password'],
-            "Amount" => (string)($payment_details['total_payable_amount'] * 100),
+            "Amount" => (string) ($payment_details['total_payable_amount'] * 100),
             "Currency" => $payment_gateway['currency'],
             "Telephone" => $_POST['telephone'],
             "Language" => "en",
@@ -713,8 +683,7 @@ class Payment extends CI_Controller
         redirect($url, 'refresh');
     }
 
-
-    function aamarpay_payment_link()
+    public function aamarpay_payment_link()
     {
 
         $payment_details = $this->session->userdata('payment_details');
@@ -733,7 +702,6 @@ class Payment extends CI_Controller
         $test_mode = $payment_gateway['enabled_test_mode'];
         //ended common code of all payment gateway
 
-
         //Store payment info temporary in user temp column to re-login in this application
         $payment_info = array($user_id, $payment_details, $this->session->userdata('applied_coupon'), microtime(true));
         $payment_info = json_encode($payment_info);
@@ -741,8 +709,6 @@ class Payment extends CI_Controller
         $payment_info = str_replace("=", "", $payment_info);
         $this->db->where('id', $user_id)->update('users', ['temp' => $payment_info]);
         $payment_info = ellipsis($payment_info, 70);
-
-
 
         if ($test_mode == 1) {
             $payment_url = 'https://sandbox.aamarpay.com/index.php';
@@ -770,7 +736,7 @@ class Payment extends CI_Controller
         echo $payment_url;
     }
 
-    function tazapay_payment_form()
+    public function tazapay_payment_form()
     {
         $payment_details = $this->session->userdata('payment_details');
         $payment_gateway = $this->db->get_where('payment_gateways', ['identifier' => 'tazapay'])->row_array();
@@ -788,9 +754,9 @@ class Payment extends CI_Controller
         $test_mode = $payment_gateway['enabled_test_mode'];
         //ended common code of all payment gateway
 
-        if($test_mode == 1){
+        if ($test_mode == 1) {
             $session_generate_url = 'https://service-sandbox.tazapay.com/v3/checkout';
-        }else{
+        } else {
             $session_generate_url = 'https://service.tazapay.com/v3/checkout';
         }
 
@@ -806,20 +772,20 @@ class Payment extends CI_Controller
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => json_encode([
                 'customer_details' => [
-                    'name' => $customer_details['first_name'].' '.$customer_details['last_name'],
+                    'name' => $customer_details['first_name'] . ' ' . $customer_details['last_name'],
                     'country' => strtoupper($_POST['country_code']),
-                    'email' => $customer_details['email']
+                    'email' => $customer_details['email'],
                 ],
                 'invoice_currency' => $payment_gateway['currency'],
-                'amount' => $payment_details['total_payable_amount']*100,
-                'success_url' => $payment_details['success_url'].'/tazapay',
+                'amount' => $payment_details['total_payable_amount'] * 100,
+                'success_url' => $payment_details['success_url'] . '/tazapay',
                 'cancel_url' => $payment_details['cancel_url'],
-                'transaction_description' => $payment_details['payment_title']
+                'transaction_description' => $payment_details['payment_title'],
             ]),
             CURLOPT_HTTPHEADER => [
                 "accept: application/json",
-                "authorization: Basic ".base64_encode($keys['api_key'].':'.$keys['api_secret']),
-                "content-type: application/json"
+                "authorization: Basic " . base64_encode($keys['api_key'] . ':' . $keys['api_secret']),
+                "content-type: application/json",
             ],
         ]);
 
@@ -833,13 +799,13 @@ class Payment extends CI_Controller
             redirect($payment_details['cancel_url'], 'refresh');
         } else {
             $responseArr = json_decode($response, true);
-            if(is_array($responseArr) && $responseArr['status'] == 'success'){
+            if (is_array($responseArr) && $responseArr['status'] == 'success') {
 
                 //this payment streaming valid for next 10 minutes
                 $this->session->set_userdata('tazapay_id', $responseArr['data']['id'], 600);
 
                 redirect($responseArr['data']['url'], 'refresh');
-            }else{
+            } else {
                 $this->session->set_flashdata('error_message', get_phrase('An error occurred'));
                 redirect($payment_details['cancel_url'], 'refresh');
             }

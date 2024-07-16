@@ -35,12 +35,7 @@
                             <?php echo get_phrase('Compare'); ?>
                         </span>
                     </div>
-                    <div class="review-icon">
-                        <p><?php echo $average_ceil_rating; ?></p>
-                        <p><i class="fa-solid fa-star <?php if ($number_of_ratings > 0) echo 'filled'; ?>"></i></p>
-                        <p>(<?php echo $number_of_ratings; ?> <?php echo get_phrase('Reviews') ?>)</p>
-                        <p><i class="fas fa-closed-captioning"></i><?php echo site_phrase($course['language']); ?></p>
-                    </div>
+                    
                     <p class="ellipsis-line-2"><?php echo $course['short_description']; ?></p>
                     <div class="courses-price-border">
                         <div class="courses-price">
