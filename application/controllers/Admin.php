@@ -75,18 +75,39 @@ class Admin extends CI_Controller
 
     public function sub_registered_user($user_id) {
 
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+
         $this->load->model('crud_model');
         $user = $this->crud_model->subRegisteredUser($user_id);
 
        // Set page data
-       $page_data['page_name'] = 'registered_user';
-       $page_data['page_title'] = get_phrase('registered_user');
+       $page_data['page_name'] = 'registered_view';
+       $page_data['page_title'] = get_phrase('registered_view');
        $page_data['sub_registered'] = $user; // Pass data to the view
 
        $this->load->view('backend/index.php', $page_data);
 
     }
     
+    public function sub_registered_edit($user_id) {
+
+        if ($this->session->userdata('admin_login') != true) {
+            redirect(site_url('login'), 'refresh');
+        }
+
+        $this->load->model('crud_model');
+        $user = $this->crud_model->subRegisteredUser($user_id);
+
+       // Set page data
+       $page_data['page_name'] = 'registered_editt';
+       $page_data['page_title'] = get_phrase('registered_editt');
+       $page_data['sub_registered'] = $user; // Pass data to the view
+
+       $this->load->view('backend/index.php', $page_data);
+
+    }
     
 
     public function categories($param1 = "", $param2 = "")
