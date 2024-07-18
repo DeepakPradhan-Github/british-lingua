@@ -51,6 +51,28 @@ class Admin extends CI_Controller
         $this->load->view('backend/index.php', $page_data);
     }
 
+    public function registered_user_save($payer_user_id, $enrol_user_id, $payment_details, $course_id)
+    {
+        // Debugging line
+        log_message('debug', 'Received data in registered_user_save: ' . json_encode(compact('payer_user_id', 'enrol_user_id', 'payment_details', 'course_id')));
+
+        // Prepare the data to be inserted
+        $data = array(
+            'user_id' => $payer_user_id,
+            'course_id' => $course_id,
+            'transaction_id' => $payment_details['transaction_id'],
+            'enrollment_date' => date('Y-m-d H:i:s'),
+            'price' => $payment_details['total_payable_amount']
+        );
+
+        // Insert the data into the database
+        if ($this->db->insert('registered_user', $data)) {
+            log_message('debug', 'Data successfully inserted into registered_user table.');
+        } else {
+            log_message('error', 'Failed to insert data into registered_user table: ' . json_encode($this->db->error()));
+        }
+    }
+
     public function registered_user_list()
     {
         // Check if the user is logged in as an admin
@@ -107,6 +129,24 @@ class Admin extends CI_Controller
 
        $this->load->view('backend/index.php', $page_data);
 
+    }
+
+    public function registered_user_update($usersId)
+    {
+
+        $this->load->model('crud_model');
+       
+
+            // Update user record
+            $formArray = array();
+            $formArray['class_time'] = $this->input->post('clss');
+            $formArray['teacher_name'] = $this->input->post('teach');
+            $formArray['meeting_link'] = $this->input->post('meet'); 
+
+            $this->crud_model->updateUser_trans($usersId, $formArray);
+            $this->session->set_flashdata('success', 'Record updated Successfully !');
+            redirect(base_url() . 'index.php/admin/index');
+        
     }
     
 

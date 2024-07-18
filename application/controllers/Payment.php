@@ -46,30 +46,43 @@ class Payment extends CI_Controller
         if ($payment_gateway['is_addon'] == 1 && $model_name != null) {
             $this->load->model('addons/' . strtolower($payment_gateway['model_name']));
         }
-
+    
         if ($model_name != null) {
             $payment_check_function = 'check_' . $payment_method . '_payment';
             $response = $this->$model_name->$payment_check_function($payment_method, 'course');
         }
         //ENDED payment model and functions are dynamic here
         if ($response === true) {
+
+             // Extracting the UPI transaction ID
+        $upi_transaction_id = $this->input->get('razorpay_payment_id');
+
             //if course is a gift purchase
             if ($payment_details['gift_to_user_id'] > 0) {
                 $enrol_user_id = $payment_details['gift_to_user_id'];
                 $this->crud_model->enrol_student($enrol_user_id, $payer_user_id);
                 $this->email_model->course_gift_notification($enrol_user_id, $payer_user_id, $payment_method, $payment_details['total_payable_amount']);
             } else {
-
                 $this->crud_model->enrol_student($enrol_user_id);
                 $this->email_model->course_purchase_notification($enrol_user_id, $payment_method, $payment_details['total_payable_amount']);
             }
             $this->crud_model->course_purchase($payer_user_id, $payment_method, $payment_details['total_payable_amount']);
-
+    
+            // Send transaction data to Admin model
+            $this->load->model('crud_model');
+            //$course_id = $payment_details['course_id'];
+           
+            // Debugging line
+           // log_message('debug', 'Sending data to admin_model: ' . json_encode(compact('payer_user_id', 'enrol_user_id', 'payment_details', 'course_id')));
+             
+            $this->crud_model->registered_user_save($payer_user_id,$upi_transaction_id);
+            
+    
             $this->session->unset_userdata('gift_to_user_id');
             $this->session->set_userdata('cart_items', array());
             $this->session->set_userdata('payment_details', '');
             $this->session->set_userdata('applied_coupon', '');
-
+    
             $this->session->set_flashdata('flash_message', site_phrase('payment_successfully_done'));
             redirect('home/my_courses', 'refresh');
         } else {
@@ -77,6 +90,7 @@ class Payment extends CI_Controller
             redirect('home/shopping_cart', 'refresh');
         }
     }
+    
 
     public function success_instructor_payment($payment_method = "")
     {

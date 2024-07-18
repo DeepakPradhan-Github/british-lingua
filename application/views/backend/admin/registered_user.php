@@ -41,7 +41,7 @@
                         <tr>
                             <td scope="row"><?php echo $user['id']; ?></td>
                             <td><?php echo $user['enrollment_date']; ?></td>
-                            <td>TRANX-RL-0001</td>
+                            <td><?php echo $user['transaction_id']; ?></td>
                             <td><?php echo $user['student_name']; ?></td>
                             <td><?php echo $user['course_id']; ?></td>
                             <td>

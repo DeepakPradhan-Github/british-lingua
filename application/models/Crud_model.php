@@ -49,7 +49,49 @@ class Crud_model extends CI_Model
 
   }
 
+  public function registered_user_save($payer_user_id, $upi_transaction_id)
+   {
+    $purchased_courses = $this->session->userdata('cart_items');
+    $name = ''; // Initialize name variable
+
+    foreach ($purchased_courses as $purchased_course) {
+        $data['course_id'] = $purchased_course;
+    }
+
+    // Fetch user first name
+    $this->db->select('first_name');
+    $this->db->where('id', $payer_user_id);
+    $query = $this->db->get('users', 1, 0);
     
+    if ($query->num_rows() > 0) {
+        $row = $query->row();
+        $name = $row->first_name; // Correctly access the object property
+    }
+
+    // Prepare the data to be inserted
+    $data = array(
+        'user_id' => $payer_user_id,
+        'course_id' => $data['course_id'],
+        'transaction_id' => $upi_transaction_id,
+        'student_name' => $name,
+        'enrollment_date' => date('Y-m-d H:i:s')
+        //'price' => $payment_details['total_payable_amount']
+    );
+
+    // Insert the data into the database
+    if ($this->db->insert('registered_user', $data)) {
+        log_message('debug', 'Data successfully inserted into registered_user table.');
+    } else {
+        log_message('error', 'Failed to insert data into registered_user table: ' . json_encode($this->db->error()));
+    }
+}
+
+
+public function updateUser_trans($usersId, $formArray) {
+
+    $this->db->where('id', $usersId);
+    return $this->db->update('registered_user', $formArray);
+} 
 
 
     public function add_category()
