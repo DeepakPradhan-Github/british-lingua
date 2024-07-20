@@ -68,20 +68,28 @@ a:hover {
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <label for="">Assignment 1</label>
-                <div> </div>
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img'] ?>" alt="" style="height:100px">
+                <label for="">Upload File1</label>
+                <input type="file" name="user_file1" id="">
+                <input type="hidden" name="existing_file1" value="<?php echo $sub_registered['file_img']; ?>">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <label for="">Assignment 2</label>
-                <div> </div>
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img2'] ?>" alt="" style="height:100px">
+                <label for="">Upload File2</label>
+                <input type="file" name="user_file2" id="">
+                <input type="hidden" name="existing_file2" value="<?php echo $sub_registered['file_img2']; ?>">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <label for="">Assignment 3</label>
-                <div> </div>
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img3'] ?>" alt="" style="height:100px">
+                <label for="">Upload File3</label>
+                <input type="file" name="user_file3" id="">
+                <input type="hidden" name="existing_file3" value="<?php echo $sub_registered['file_img3']; ?>">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <label for="">Assignment 4</label>
-                <input type="file" name="userfile" id="file">
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img4'] ?>" alt="" style="height:100px">
+                <label for="">Upload File4</label>
+                <input type="file" name="user_file4" id="">
+                <input type="hidden" name="existing_file4" value="<?php echo $sub_registered['file_img4']; ?>">
             </div>
         </div>
         <button class="btn btn-success mt-2" type="submit" name="submit">Update</button>

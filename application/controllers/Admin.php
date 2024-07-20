@@ -130,24 +130,42 @@ class Admin extends CI_Controller
        $this->load->view('backend/index.php', $page_data);
 
     }
-
     public function registered_user_update($usersId)
     {
-
         $this->load->model('crud_model');
-       
-
-            // Update user record
-            $formArray = array();
-            $formArray['class_time'] = $this->input->post('clss');
-            $formArray['teacher_name'] = $this->input->post('teach');
-            $formArray['meeting_link'] = $this->input->post('meet'); 
-
-            $this->crud_model->updateUser_trans($usersId, $formArray);
-            $this->session->set_flashdata('success', 'Record updated Successfully !');
-            redirect(base_url() . 'index.php/admin/index');
-        
+    
+        // Initialize an array to hold the filenames
+        $data = array();
+    
+        // Handle each file upload individually
+        for ($i = 1; $i <= 4; $i++) {
+            $file_key = 'user_file' . $i;
+            if (isset($_FILES[$file_key]['name']) && $_FILES[$file_key]['name'] != "") {
+                $data['file_img' . $i] = random_string('alnum', 20) . '.' . pathinfo($_FILES[$file_key]['name'], PATHINFO_EXTENSION);
+                move_uploaded_file($_FILES[$file_key]['tmp_name'], 'uploads/reg_img/' . $data['file_img' . $i]);
+            } else {
+                // If no new file is uploaded, use the existing file name
+                $data['file_img' . $i] = $this->input->post('existing_file' . $i);
+            }
+        }
+    
+        // Prepare data for insertion
+        $formArray = array(
+            'class_time' => $this->input->post('clss'),
+            'teacher_name' => $this->input->post('teach'),
+            'meeting_link' => $this->input->post('meet'),
+            'file_img' => $data['file_img1'],
+            'file_img2' => $data['file_img2'],
+            'file_img3' => $data['file_img3'],
+            'file_img4' => $data['file_img4']
+        );
+    
+        $this->crud_model->updateUser_trans($usersId, $formArray);
+        $this->session->set_flashdata('success', 'Record updated successfully!');
+        redirect(base_url() . 'index.php/admin/index');
     }
+    
+    
     
 
     public function categories($param1 = "", $param2 = "")
