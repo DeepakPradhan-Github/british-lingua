@@ -627,7 +627,7 @@
                                     <!--    <p class="last-update">Last updated Thu, 13-Jun-2024</p>-->
                                     <!---->
                                     <div class="course-title">
-                                        <a href="/home/course/basic-english-course/2">Basic English Course</a>
+                                        <a href="british-lingua/home/course/basic-english-course/2">Basic English Course</a>
                                     </div>
                                     <div class="course-meta">
                                                                                     <!--<span class=""><i class="fas fa-play-circle"></i>-->
@@ -687,7 +687,7 @@
                     
                        
                             <div class="single-popup-course">
-                                <a href="/home/course/crash-course-in-english/3" id="latest_course_3" class="checkPropagation courses-card-body" data-target="webuiPopover2">
+                                <a href="/british-lingua/home/course/crash-course-in-english/3" id="latest_course_3" class="checkPropagation courses-card-body" data-target="webuiPopover2">
                                     <div class="courses-card-image">
                                         <img loading="lazy" src="/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_31718168893.jpg">
                                         <div class="courses-icon " id="coursesWishlistIconLatestCourse3">
@@ -744,7 +744,7 @@
                     
                        
                             <div class="single-popup-course">
-                                <a href="/home/course/advanced-course-in-english/4" id="latest_course_4" class="checkPropagation courses-card-body" data-target="webuiPopover3">
+                                <a href="british-lingua/home/course/advanced-course-in-english/4" id="latest_course_4" class="checkPropagation courses-card-body" data-target="webuiPopover3">
                                     <div class="courses-card-image">
                                         <img loading="lazy" src="/uploads/thumbnails/course_thumbnails/optimized/course_thumbnail_default-new_41718168914.jpg">
                                         <div class="courses-icon " id="coursesWishlistIconLatestCourse4">

@@ -100,6 +100,22 @@ class Home extends CI_Controller
         $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
     }
 
+    public function purchased_data() {
+
+        if (!$this->session->userdata('logged_in')) {
+            redirect('login');
+        }
+        
+        $user_id = $this->session->userdata('user_id');
+        $this->load->model('crud_model');
+        $data['user'] = $this->crud_model->get_user_data_by_id($user_id);
+        
+       // $this->load->view('profile_view', $data);
+         $data['page_name'] = "course_page";
+
+        $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $data);
+    }
+
     public function shopping_cart2($gift_status = "")
     {
         if (!$this->session->userdata('cart_items')) {

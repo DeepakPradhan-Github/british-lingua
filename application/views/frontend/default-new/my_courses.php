@@ -25,7 +25,10 @@
                             <div class="col-lg-12 col-md-12 col-sm-6 col-12 mb-5">
                                 <div class="my-course-1-full-body-card">
                                     <div class="my-course-1-img">
+                                        <a href="<?php echo site_url('home/course/' . rawurlencode(slugify($course_details['title'])) . '/' . $course_details['id']); ?>">
                                         <img loading="lazy" src="<?php echo $this->crud_model->get_course_thumbnail_url($course_details['id']); ?>" alt="">
+                                        </a>
+                                      
                                     </div>
                                     <div class="my-course-1-text pt-1">
                                         <div class="my-course-1-text-heading">

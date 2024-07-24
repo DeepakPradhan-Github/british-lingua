@@ -152,20 +152,36 @@ class Admin extends CI_Controller
         // Prepare data for insertion
         $formArray = array(
             'class_time' => $this->input->post('clss'),
-            'teacher_name' => $this->input->post('teach'),
-            'meeting_link' => $this->input->post('meet'),
+            'Teacher' => $this->input->post('teach'),
+            'class_url' => $this->input->post('meet')
+            
+        );
+
+        $formArray1 = array(
+            
             'file_img' => $data['file_img1'],
             'file_img2' => $data['file_img2'],
             'file_img3' => $data['file_img3'],
             'file_img4' => $data['file_img4']
         );
+
+        $formArray2 = array(
+            
+            'file_img' => $data['file_img1'],
+            'file_img2' => $data['file_img2'],
+            'file_img3' => $data['file_img3'],
+            'file_img4' => $data['file_img4']
+        );
+
+        // $this->db->where('id', $usersId);
+        // $this->db->update('course', $formArray);
     
-        $this->crud_model->updateUser_trans($usersId, $formArray);
+        $this->crud_model->updateUser_trans($usersId, $formArray,$formArray1,$formArray2);
         $this->session->set_flashdata('success', 'Record updated successfully!');
         redirect(base_url() . 'index.php/admin/index');
     }
     
-    
+  
     
 
     public function categories($param1 = "", $param2 = "")

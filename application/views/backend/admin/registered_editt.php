@@ -27,7 +27,7 @@ a:hover {
 
                     <div class="btn btn-warning"><a href="<?php echo site_url('admin/registered_user_list'); ?>">Back</a></div>
 
-                    <form action="<?php echo base_url() . 'index.php/admin/registered_user_update/' . $sub_registered['id'] ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url() . 'index.php/admin/registered_user_update/' . $sub_registered['course_id'] ?>" method="post" enctype="multipart/form-data">
     <div class="form-group py-4">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -59,12 +59,12 @@ a:hover {
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <label for="">Teacher Name</label>
-                <input class="form-control" type="text" name="teach" value="<?php echo $sub_registered['teacher_name']; ?>">
+                <input class="form-control" type="text" name="teach" value="<?php echo $sub_registered['Teacher']; ?>">
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                 <label for="">Meeting Link</label>
-                <input class="form-control" type="text" name="meet" value="<?php echo $sub_registered['meeting_link']; ?>" >
+                <input class="form-control" type="text" name="meet" value="<?php echo $sub_registered['class_url']; ?>" >
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

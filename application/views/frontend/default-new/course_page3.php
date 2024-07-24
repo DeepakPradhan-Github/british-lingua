@@ -33,16 +33,16 @@ if ($number_of_ratings > 0) {
                                         </p>
                                     </div>
 
-                                    <!--<div class="info-tag">-->
-                                    <!--    <?php if ($course_duration) : ?>-->
-                                    <!--        <i class="fa-regular fa-clock text-15px mt-7px"></i>-->
-                                    <!--        <p class="text-15px mt-1"><?php echo $course_duration; ?></p>-->
-                                    <!--    <?php endif; ?>-->
-                                    <!--</div>-->
-                                    <!--<div class="info-tag">-->
-                                    <!--    <i class="fa-regular fa-user text-15px mt-7px"></i>-->
-                                    <!--    <p class="text-15px mt-1"><?php echo $number_of_enrolments ?> <?php echo get_phrase('Enrolled'); ?></p>-->
-                                    <!--</div>-->
+                                    <!-- <div class="info-tag">
+                                        <?php if ($course_duration) : ?>
+                                            <i class="fa-regular fa-clock text-15px mt-7px"></i>
+                                            <p class="text-15px mt-1"><?php echo $course_duration; ?></p>
+                                        <?php endif; ?>
+                                    </div> -->
+                                    <!-- <div class="info-tag">
+                                        <i class="fa-regular fa-user text-15px mt-7px"></i>
+                                        <p class="text-15px mt-1"><?php echo $number_of_enrolments ?> <?php echo get_phrase('Enrolled'); ?></p>
+                                    </div> -->
 
                                     <div class="info-tag">
                                         <div class="icon">
@@ -54,36 +54,31 @@ if ($number_of_ratings > 0) {
                                                         <li class="me-0"><i class="fa-solid fa-star text-light text-15px  mt-7px"></i></li>
                                                     <?php endif; ?>
                                                 <?php endfor; ?>
-                                                <!--<p class="text-15px mt-1">(<?php echo $number_of_ratings . ' ' . get_phrase('Reviews'); ?>)</p>-->
+                                                <p class="text-15px mt-1">(<?php echo $number_of_ratings . ' ' . get_phrase('Reviews'); ?>)</p>
                                             </ul>
                                         </div>
-                                    </div>
-                                    
-                                     <div class="info-tag">
-                                        <i class="fas fa-language text-15px mt-8px"></i>
-                                        <p class="text-15px mt-1"><?php echo ucfirst($course_details['language']); ?></p>
                                     </div>
 
 
                                 </div>
-                                <!--<div class="col-12 course-heading-info mb-3">-->
-                                <!--    <div class="info-tag">-->
-                                <!--        <i class="fas fa-language text-15px mt-8px"></i>-->
-                                <!--        <p class="text-15px mt-1"><?php echo ucfirst($course_details['language']); ?></p>-->
-                                <!--    </div>-->
+                                <div class="col-12 course-heading-info mb-3">
+                                    <div class="info-tag">
+                                        <i class="fas fa-language text-15px mt-8px"></i>
+                                        <p class="text-15px mt-1"><?php echo ucfirst($course_details['language']); ?></p>
+                                    </div>
 
-                                <!--    <div class="info-tag">-->
-                                <!--        <p><i class="far fa-calendar-alt text-15px mt-7px"></i></p>-->
-                                <!--        <p class="text-12px mt-5px me-1"><?php echo get_phrase('Last Updated'); ?></p>-->
-                                <!--        <p class="text-15px mt-1">-->
-                                <!--            <?php if ($course_details['last_modified'] > 0) : ?>-->
-                                <!--                <?php echo date('D, d-M-Y', $course_details['last_modified']); ?>-->
-                                <!--            <?php else : ?>-->
-                                <!--                <?php echo date('D, d-M-Y', $course_details['date_added']); ?>-->
-                                <!--            <?php endif; ?>-->
-                                <!--        </p>-->
-                                <!--    </div>-->
-                                <!--</div>-->
+                                    <!-- <div class="info-tag">
+                                        <p><i class="far fa-calendar-alt text-15px mt-7px"></i></p>
+                                        <p class="text-12px mt-5px me-1"><?php echo get_phrase('Last Updated'); ?></p>
+                                        <p class="text-15px mt-1">
+                                            <?php if ($course_details['last_modified'] > 0) : ?>
+                                                <?php echo date('D, d-M-Y', $course_details['last_modified']); ?>
+                                            <?php else : ?>
+                                                <?php echo date('D, d-M-Y', $course_details['date_added']); ?>
+                                            <?php endif; ?>
+                                        </p>
+                                    </div> -->
+                                </div>
 
                             </div>
                         </div>
@@ -130,15 +125,15 @@ if ($number_of_ratings > 0) {
 
                                 <span class="ms-2"><?php echo get_phrase('Curriculum') ?></span></button>
                         </li>
-                        <!--<li class="nav-item" role="presentation">-->
-                        <!--    <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" type="button" role="tab" aria-controls="contact" aria-selected="false">-->
-                        <!--        <svg id="Group_12" data-name="Group 12" xmlns="http://www.w3.org/2000/svg" width="15.582" height="19.666" viewBox="0 0 15.582 19.666">-->
-                        <!--            <path id="Shape" d="M7.791,1.731a6.06,6.06,0,0,0-6.06,6.06V9.522A.866.866,0,1,1,0,9.522V7.791a7.791,7.791,0,0,1,15.582,0V9.522a.866.866,0,1,1-1.731,0V7.791A6.06,6.06,0,0,0,7.791,1.731Z" transform="translate(0 9.278)" fill="#1e293b" />-->
-                        <!--            <path id="Shape-2" data-name="Shape" d="M5.194,8.656A3.463,3.463,0,1,0,1.731,5.194,3.463,3.463,0,0,0,5.194,8.656Zm0,1.731A5.194,5.194,0,1,0,0,5.194,5.194,5.194,0,0,0,5.194,10.388Z" transform="translate(2.597)" fill="#1e293b" fill-rule="evenodd" />-->
-                        <!--        </svg>-->
+                        <!-- <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" type="button" role="tab" aria-controls="contact" aria-selected="false">
+                                <svg id="Group_12" data-name="Group 12" xmlns="http://www.w3.org/2000/svg" width="15.582" height="19.666" viewBox="0 0 15.582 19.666">
+                                    <path id="Shape" d="M7.791,1.731a6.06,6.06,0,0,0-6.06,6.06V9.522A.866.866,0,1,1,0,9.522V7.791a7.791,7.791,0,0,1,15.582,0V9.522a.866.866,0,1,1-1.731,0V7.791A6.06,6.06,0,0,0,7.791,1.731Z" transform="translate(0 9.278)" fill="#1e293b" />
+                                    <path id="Shape-2" data-name="Shape" d="M5.194,8.656A3.463,3.463,0,1,0,1.731,5.194,3.463,3.463,0,0,0,5.194,8.656Zm0,1.731A5.194,5.194,0,1,0,0,5.194,5.194,5.194,0,0,0,5.194,10.388Z" transform="translate(2.597)" fill="#1e293b" fill-rule="evenodd" />
+                                </svg>
 
-                        <!--        <span class="ms-2"><?php echo get_phrase('Instructor') ?></span></button>-->
-                        <!--</li>-->
+                                <span class="ms-2"><?php echo get_phrase('Instructor') ?></span></button> -->
+                        </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">
                                 <svg id="Group_14" data-name="Group 14" xmlns="http://www.w3.org/2000/svg" width="20" height="19.749" viewBox="0 0 20 19.749">
@@ -155,6 +150,7 @@ if ($number_of_ratings > 0) {
                         </div>
 
                         <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+                       
                             <?php include "course_page_curriculum.php"; ?>
                         </div>
 
@@ -186,8 +182,7 @@ if ($number_of_ratings > 0) {
                                 </div>
                             </div>
                         </div>
-                         <div class="ammount d-flex">
-                         <?php if (!is_purchased($course_details['id'])) : ?>
+                        <div class="ammount d-flex">
                             <?php if ($course_details['is_free_course']) : ?>
                                 <h1 class="fw-500"><?php echo get_phrase('Free'); ?></h1>
                             <?php elseif ($course_details['discount_flag']) : ?>
@@ -196,45 +191,18 @@ if ($number_of_ratings > 0) {
                             <?php else : ?>
                                 <h1 class="fw-500"><?php echo currency($course_details['price']); ?></h1>
                             <?php endif; ?>
-                            <?php endif; ?>
-
-                            <a href="<?php echo base_url('home/compare?course-1=' . slugify($course_details['title']) . '&course-id-1=' . $course_details['id']); ?>" title="<?php echo get_phrase('Compare this course') ?>" data-bs-toggle="tooltip" class="ms-auto py-2">
-                              Compare Course &nbsp;  <img loading="lazy" width="18px" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>" style="filter: invert(1);">
-                            </a>
-                        </div> 
-                        <!--<div class="enrol">-->
-                        <!--    <div class="icon">-->
-                        <!--        <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/c-enrold-1.png') ?>">-->
-                        <!--        <h4><?php echo get_phrase('Lectures') ?></h4>-->
-                        <!--    </div>-->
-                        <!--    <h5><?php echo $this->db->get_where('lesson', ['course_id' => $course_details['id'], 'lesson_type !=' => 'quiz'])->num_rows(); ?></h5>-->
-                        <!--</div>-->
-
-                         <div class="ammount ">
-                            <?php if (is_purchased($course_details['id'])) : ?>
-                                <h3 class="fw-500"><?php //echo get_phrase('Free'); ?> Teacher</h3>
-                                <p><?php echo $course_details['Teacher']; ?></p>
-                            <?php //elseif ($course_details['discount_flag']) : ?>
-                                <h3 class="fw-500"><?php //echo currency($course_details['discounted_price']); ?>Duration</h3>
-                                <p><?php echo $course_details['hourss']; ?>&nbsp;hrs</p>
-                                <h3 class="fw-500"><del><?php //echo currency($course_details['price']); ?></del></h3>
-                            <?php //else : ?>
-                                <h3 class="fw-500"><?php //echo currency($course_details['price']); ?>Days</h3>
-                                
-                                <p> <?php echo $course_details['Days']; ?>&nbsp;Days</p>
-
-                                <h3 class="fw-500"><?php //echo currency($course_details['price']); ?>Class url</h3>
-                                
-                                <p><a href="<?php echo $course_details['class_url']; ?>"><?php echo $course_details['class_url']; ?></a> &nbsp;</p>
-
-
-                            <?php endif; ?>
 
                             <a href="<?php echo base_url('home/compare?course-1=' . slugify($course_details['title']) . '&course-id-1=' . $course_details['id']); ?>" title="<?php echo get_phrase('Compare this course') ?>" data-bs-toggle="tooltip" class="ms-auto py-2">
                                 <img loading="lazy" width="18px" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>" style="filter: invert(1);">
                             </a>
                         </div>
-                        
+                        <!-- <div class="enrol">
+                            <div class="icon">
+                                <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/c-enrold-1.png') ?>">
+                                <h4><?php echo get_phrase('Lectures') ?></h4>
+                            </div>
+                            <h5><?php echo $this->db->get_where('lesson', ['course_id' => $course_details['id'], 'lesson_type !=' => 'quiz'])->num_rows(); ?></h5>
+                        </div> -->
 
                         <?php $number_of_quiz = $this->db->get_where('lesson', ['course_id' => $course_details['id'], 'lesson_type' => 'quiz'])->num_rows(); ?>
                         <?php if ($number_of_quiz > 0) : ?>
@@ -257,19 +225,19 @@ if ($number_of_ratings > 0) {
                         </div>
 
 
-                        <!--<div class="enrol">-->
-                        <!--    <div class="icon">-->
-                        <!--        <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/c-enrold-5.png') ?>">-->
-                        <!--        <h4><?php echo get_phrase('Expiry period') ?></h4>-->
-                        <!--    </div>-->
-                        <!--    <h5>-->
-                        <!--        <?php if ($course_details['expiry_period'] <= 0) : ?>-->
-                        <!--            <?php echo get_phrase('Lifetime') ?>-->
-                        <!--        <?php else : ?>-->
-                        <!--            <?php echo $course_details['expiry_period'] . ' ' . get_phrase('Months'); ?>-->
-                        <!--        <?php endif; ?>-->
-                        <!--    </h5>-->
-                        <!--</div>-->
+                        <!-- <div class="enrol">
+                            <div class="icon">
+                                <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/c-enrold-5.png') ?>">
+                                <h4><?php echo get_phrase('Expiry period') ?></h4>
+                            </div>
+                            <h5>
+                                <?php if ($course_details['expiry_period'] <= 0) : ?>
+                                    <?php echo get_phrase('Lifetime') ?>
+                                <?php else : ?>
+                                    <?php echo $course_details['expiry_period'] . ' ' . get_phrase('Months'); ?>
+                                <?php endif; ?>
+                            </h5>
+                        </div> -->
 
                         <?php if (addon_status('certificate')) : ?>
                             <div class="enrol">
@@ -287,10 +255,10 @@ if ($number_of_ratings > 0) {
                         <div class="button">
                             <?php $cart_items = $this->session->userdata('cart_items'); ?>
                             <?php if (is_purchased($course_details['id'])) : ?>
-                                <a href="<?php echo $course_details['class_url']  ?>"> <?php echo get_phrase('join_now'); ?></a>
-                                <!-- <?php //if ($course_details['is_free_course'] != 1) : ?>
-                                    <a href="#" onclick="actionTo('<?php //echo site_url('home/handle_buy_now/' . $course_details['id'] . '?gift=1'); ?>')"><i class="fas fa-gift"></i> <?php echo get_phrase('Gift someone else'); ?></a>
-                                <?php //endif; ?> -->
+                                <a href="<?php echo site_url('home/lesson/' . slugify($course_details['title']) . '/' . $course_details['id']) ?>"><i class="far fa-play-circle"></i> <?php echo get_phrase('Start Now'); ?></a>
+                                <?php if ($course_details['is_free_course'] != 1) : ?>
+                                    <a href="#" onclick="actionTo('<?php echo site_url('home/handle_buy_now/' . $course_details['id'] . '?gift=1'); ?>')"><i class="fas fa-gift"></i> <?php echo get_phrase('Gift someone else'); ?></a>
+                                <?php endif; ?>
                             <?php else : ?>
                                 <?php if ($course_details['is_free_course'] == 1) : ?>
                                     <a href="<?php echo site_url('home/get_enrolled_to_free_course/' . $course_details['id']); ?>"><?php echo get_phrase('Enroll Now'); ?></a>
@@ -410,12 +378,12 @@ if ($number_of_ratings > 0) {
                                                 <h5><?php echo currency($course['price']); ?></h5>
                                             <?php endif; ?>
                                         </div>
-                                        <!--<div class="courses-price-right ">-->
-                                        <!--    <?php if ($course_duration) : ?>-->
-                                        <!--        <i class="fa-regular fa-clock"></i>-->
-                                        <!--        <p class="m-0"><?php echo $course_duration; ?></p>-->
-                                        <!--    <?php endif ?>-->
-                                        <!--</div>-->
+                                        <!-- <div class="courses-price-right ">
+                                            <?php if ($course_duration) : ?>
+                                                <i class="fa-regular fa-clock"></i>
+                                                <p class="m-0"><?php echo $course_duration; ?></p>
+                                            <?php endif ?>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>

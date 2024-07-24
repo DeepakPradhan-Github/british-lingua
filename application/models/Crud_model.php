@@ -70,6 +70,7 @@ class Crud_model extends CI_Model
 
     // Prepare the data to be inserted
     $data = array(
+        //'id' => $data['course_id'],
         'user_id' => $payer_user_id,
         'course_id' => $data['course_id'],
         'transaction_id' => $upi_transaction_id,
@@ -87,11 +88,43 @@ class Crud_model extends CI_Model
 }
 
 
-public function updateUser_trans($usersId, $formArray) {
+public function updateUser_trans($usersId, $formArray, $formArray1, $formArray2) {
+    // Start a transaction
+    $this->db->trans_start();
+
+    // Update the 'course' table
+    $this->db->where('id', $usersId);
+    $courseUpdate = $this->db->update('course', $formArray);
+
+    // Update the 'registered_user' table with the first form array
+    $this->db->where('course_id', $usersId);
+    $userUpdate = $this->db->update('registered_user', $formArray);
+
+    // Update the 'registered_user' table with the second form array
+    $this->db->where('course_id', $usersId);
+    $userUpdate1 = $this->db->update('registered_user', $formArray1);
 
     $this->db->where('id', $usersId);
-    return $this->db->update('registered_user', $formArray);
-} 
+    $courseUpdate2 = $this->db->update('course', $formArray2);
+
+    // Complete the transaction
+    $this->db->trans_complete();
+
+    // Check the transaction status and ensure all updates were successful
+    return $this->db->trans_status() && $courseUpdate && $userUpdate && $userUpdate1 && $courseUpdate2;
+}
+
+public function get_user_data_by_id($user_id) {
+    $this->db->where('user_id', $user_id);
+    $query = $this->db->get('registered_user');
+    return $query->row();  // Return a single row
+}
+
+// public function updateUser_trans2($usersId, $formArray) {
+
+//     $this->db->where('id', $usersId);
+//     return $this->db->update('registered_user', $formArray);
+// }
 
 
     public function add_category()
