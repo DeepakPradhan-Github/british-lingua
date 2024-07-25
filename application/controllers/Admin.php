@@ -148,12 +148,17 @@ class Admin extends CI_Controller
                 $data['file_img' . $i] = $this->input->post('existing_file' . $i);
             }
         }
+
+        // $vale = $this->input->post('approve_user');
+        // print_r($vale); die("===");
     
         // Prepare data for insertion
         $formArray = array(
             'class_time' => $this->input->post('clss'),
             'Teacher' => $this->input->post('teach'),
-            'class_url' => $this->input->post('meet')
+            'class_url' => $this->input->post('meet'),
+            'class_date' => $this->input->post('c_date'),
+            'approve' => $this->input->post('approve_user')
             
         );
 

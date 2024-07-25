@@ -91,6 +91,21 @@ a:hover {
                 <input type="file" name="user_file4" id="">
                 <input type="hidden" name="existing_file4" value="<?php echo $sub_registered['file_img4']; ?>">
             </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label for="">Class Date</label>
+                <input class="form-control" type="text" name="c_date" value="<?php echo $sub_registered['class_date']; ?>" >
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label for="">Approve User</label>
+                
+                <select name="approve_user" id="approve_user" class="form-control">
+                    <option value="">Select Options</option>
+                    <option value="1">Allow</option>
+                    <option value="0">Not Allow</option>
+                </select>
+            </div>
         </div>
         <button class="btn btn-success mt-2" type="submit" name="submit">Update</button>
     </div>

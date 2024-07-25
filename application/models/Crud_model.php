@@ -89,12 +89,14 @@ class Crud_model extends CI_Model
 
 
 public function updateUser_trans($usersId, $formArray, $formArray1, $formArray2) {
-    // Start a transaction
-    $this->db->trans_start();
+    // Start a transaction usersId
 
+    // print_r($formArray); die("===");
+    $this->db->trans_start();
+   
     // Update the 'course' table
-    $this->db->where('id', $usersId);
-    $courseUpdate = $this->db->update('course', $formArray);
+    // $this->db->where('id', $usersId);
+    // $courseUpdate = $this->db->update('course', $formArray);
 
     // Update the 'registered_user' table with the first form array
     $this->db->where('course_id', $usersId);
@@ -115,7 +117,14 @@ public function updateUser_trans($usersId, $formArray, $formArray1, $formArray2)
 }
 
 public function get_user_data_by_id($user_id) {
-    $this->db->where('user_id', $user_id);
+    $this->db->where('course_id', $user_id);
+    $query = $this->db->get('registered_user');
+    return $query->row();  // Return a single row
+}
+
+public function get_user_data_by_id1($user_idd,$course_idd) {
+    $this->db->where('user_id', $user_idd);
+    $this->db->where('course_id', $course_idd);
     $query = $this->db->get('registered_user');
     return $query->row();  // Return a single row
 }
