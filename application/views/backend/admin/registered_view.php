@@ -55,39 +55,53 @@
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <label for="">Teacher Id</label>
-                    <input class="form-control" type="text" value="<?php echo $sub_registered['teacher_id']; ?>"
-                        readonly>
-                </div>
+                <label for="">Description</label>
+                <input class="form-control" type="text" name="desc" value="<?php echo $sub_registered['desc']; ?>" readonly>
+            </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <label for="">Class Time</label>
-                    <input class="form-control" type="text" readonly>
-                </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <label for="">Class Time</label>
+                <input class="form-control" type="time" name="clss" value="<?php echo $sub_registered['class_time']; ?>" readonly>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <label for="">Teacher Name</label>
+                <input class="form-control" type="text" name="teach" value="<?php echo $sub_registered['Teacher']; ?>" readonly>
+            </div>
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label for="">Meeting Link</label>
-                    <input class="form-control" type="text" value="<?php echo $sub_registered['meeting_link']; ?>"
-                        readonly>
-                </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label for="">Meeting Link</label>
+                <input class="form-control" type="text" name="meet" value="<?php echo $sub_registered['class_url']; ?>" readonly>
+            </div>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <label for="">Assignment 1</label>
-                    <div>Assignment </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <label for="">Assignment 2</label>
-                    <div><img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img'] ?>" alt=""
-                            style="height:100px"> </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <label for="">Assignment 3</label>
-                    <div>Assignment </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <label for="">Assignment 4</label>
-                    <div>Assignment </div>
-                </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img'] ?>" alt="" style="height:100px">
+                <label for="">Assignment File1</label>
+                <input type="file" name="user_file1" id="">
+                <input type="hidden" name="existing_file1" value="<?php echo $sub_registered['file_img']; ?>">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img2'] ?>" alt="" style="height:100px">
+                <label for="">Assignment File2</label>
+                <input type="file" name="user_file2" id="">
+                <input type="hidden" name="existing_file2" value="<?php echo $sub_registered['file_img2']; ?>">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img3'] ?>" alt="" style="height:100px">
+                <label for="">Assignment File3</label>
+                <input type="file" name="user_file3" id="">
+                <input type="hidden" name="existing_file3" value="<?php echo $sub_registered['file_img3']; ?>">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <img src="<?php echo base_url() . '/uploads/reg_img/' . $sub_registered['file_img4'] ?>" alt="" style="height:100px">
+                <label for="">Assignment File4</label>
+                <input type="file" name="user_file4" id="">
+                <input type="hidden" name="existing_file4" value="<?php echo $sub_registered['file_img4']; ?>">
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <label for="">Class Date</label>
+                <input class="form-control" type="text" name="c_date" value="<?php echo $sub_registered['class_date']; ?>" >
+            </div>
 
             </div>
         </div>

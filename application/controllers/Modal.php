@@ -29,6 +29,10 @@ class Modal extends CI_Controller {
 		$page_data['param5']		=	$param5;
 		$page_data['param6']		=	$param6;
 		$page_data['param7']		=	$param7;
+		// $page_data['page_name'] = "course_page_curriculum";
+		// $page_data['page_title'] = site_phrase('course_page_curriculum');
+		
 		$this->load->view( 'backend/'.$logged_in_user_role.'/'.$page_name.'.php' ,$page_data);
+		// $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
 	}
 }

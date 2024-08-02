@@ -141,7 +141,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row mb-3">
-                                                    <label class="col-md-2 col-form-label" for="course_title"><?php //echo get_phrase('course_title'); ?>Class Url <span class="required">*</span> </label>
+                                                    <label class="col-md-2 col-form-label" for="course_title"><?php //echo get_phrase('course_title'); ?>Any Url <span class="required">*</span> </label>
                                                     <div class="col-md-10">
                                                         <input type="text" class="form-control" id="course_title" name = "class_url" placeholder="<?php //echo get_phrase('enter_course_title'); ?>" required>
                                                     </div>

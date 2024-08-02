@@ -154,6 +154,7 @@ class Admin extends CI_Controller
     
         // Prepare data for insertion
         $formArray = array(
+            'desc' => $this->input->post('desc'),
             'class_time' => $this->input->post('clss'),
             'Teacher' => $this->input->post('teach'),
             'class_url' => $this->input->post('meet'),

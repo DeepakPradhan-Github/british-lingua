@@ -58,6 +58,8 @@ class Crud_model extends CI_Model
         $data['course_id'] = $purchased_course;
     }
 
+    //print_r($purchased_course); die("===");
+
     // Fetch user first name
     $this->db->select('first_name');
     $this->db->where('id', $payer_user_id);
@@ -106,14 +108,14 @@ public function updateUser_trans($usersId, $formArray, $formArray1, $formArray2)
     $this->db->where('course_id', $usersId);
     $userUpdate1 = $this->db->update('registered_user', $formArray1);
 
-    $this->db->where('id', $usersId);
-    $courseUpdate2 = $this->db->update('course', $formArray2);
+    // $this->db->where('id', $usersId);
+    // $courseUpdate2 = $this->db->update('course', $formArray2);
 
     // Complete the transaction
     $this->db->trans_complete();
 
     // Check the transaction status and ensure all updates were successful
-    return $this->db->trans_status() && $courseUpdate && $userUpdate && $userUpdate1 && $courseUpdate2;
+    return $this->db->trans_status() && $userUpdate && $userUpdate1 ;
 }
 
 public function get_user_data_by_id($user_id) {

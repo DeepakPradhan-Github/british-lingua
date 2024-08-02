@@ -29,13 +29,23 @@ if ($course_trans->approve == 0) {
     <?php echo $course_trans->enrollment_date; ?>
 </div>
 
-<section class="d-flex flex-column">
+<div class="course-description">
+    <h5 class="description-head"><?php echo get_phrase('Description') ?></h5>
+    <?php echo $course_trans->desc; ?>
+</div>
+
+<div class="course-description">
+    <h5 class="description-head"><?php echo get_phrase('Class Time') ?></h5>
+    <?php echo $course_trans->class_time; ?>
+</div>
+
+<section class="d-flex flex-column gap-0" style="">
   <h3 class="description-head"><?php echo get_phrase('Assignments') ?></h3>
 
  <!-- File 1 -->
   <div>
   <label for="fileInput1">File 1</label>
-<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img; ?>" alt="File1" style="height:6em; width:6em; margin:10%; " onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
+<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img; ?>" alt="File1" style="height:6em; width:6em; margin-left:10%; margin-right:10%; margin-top:2%;" onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
 <input type="hidden" id="fileUrl1" value="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img; ?>">
 <button id="downloadButton1" class="btn btn-success">Download File</button>
   </div>
@@ -44,7 +54,7 @@ if ($course_trans->approve == 0) {
 <!-- File 2 -->
  <div>
  <label for="fileInput2">File 2</label>
-<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img2; ?>" alt="File2" style="height:6em; width:6em; margin:10%;" onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
+<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img2; ?>" alt="File2" style="height:6em; width:6em; margin-left:10%; margin-right:10%; margin-top:2%;" onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
 <input type="hidden" id="fileUrl2" value="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img2; ?>">
 <button id="downloadButton2" class="btn btn-success">Download File</button>
  </div>
@@ -53,7 +63,7 @@ if ($course_trans->approve == 0) {
 <!-- File 3 -->
  <div>
  <label for="fileInput3">File 3</label>
-<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img3; ?>" alt="File3" style="height:6em; width:6em; margin:10%;" onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
+<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img3; ?>" alt="File3" style="height:6em; width:6em; margin-left:10%; margin-right:10%; margin-top:2%;" onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
 <input type="hidden" id="fileUrl3" value="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img3; ?>">
 <button id="downloadButton3" class="btn btn-success">Download File</button>
  </div>
@@ -62,7 +72,7 @@ if ($course_trans->approve == 0) {
 <!-- File 4 -->
  <div>
  <label for="fileInput4">File 4</label>
-<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img4; ?>" alt="File4" style="height:6em; width:6em; margin:10%;" onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
+<img src="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img4; ?>" alt="File4" style="height:6em; width:6em; margin-left:10%; margin-right:10%; margin-top:2%;" onerror="this.onerror=null; this.src='<?php echo base_url() . '/uploads/addons/download_file.png' ?>';">
 <input type="hidden" id="fileUrl4" value="<?php echo base_url() . '/uploads/reg_img/' . $course_trans->file_img4; ?>">
 <button id="downloadButton4" class="btn btn-success">Download File</button>
  </div>

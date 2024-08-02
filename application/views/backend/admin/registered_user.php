@@ -29,6 +29,7 @@
                 <thead>
                     <tr>
                         <th scope="col">S.No.</th>
+                        <th scope="col">User Id</th>
                         <th scope="col">Enrollment Date</th>
                         <th scope="col">Transaction Id</th>
                         <th scope="col">Student Name</th>
@@ -40,6 +41,7 @@
                     <?php foreach ($registered_users as $user): ?>
                         <tr>
                             <td scope="row"><?php echo $user['id']; ?></td>
+                            <td scope="row"><?php echo $user['user_id']; ?></td>
                             <td><?php echo $user['enrollment_date']; ?></td>
                             <td><?php echo $user['transaction_id']; ?></td>
                             <td><?php echo $user['student_name']; ?></td>
